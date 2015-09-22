@@ -5,7 +5,7 @@ These controls are built with extreme simplicity in mind. It does not come with 
 
 This enable web developers to reuse them in any projects without worrying about conflicting styles.
 
-## Calendar (month view)
+## Calendar control
 
 ### Target scenarios
 
