@@ -15,6 +15,10 @@ This enable web developers to reuse them in any projects without worrying about 
 
 For localizability, we do not add weekday names (Sunday to Saturday) to the header.
 
+### Requirements
+
+* Flexible box (flexbox) supported browser
+
 ### Sample JSX
 
 ``` html
