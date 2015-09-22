@@ -3,6 +3,8 @@ Simple and naive controls for ReactJS.
 
 These controls are built with extreme simplicity in mind. It does not come with any styles for cosmetic purpose. Stylesheet included are very limited and only to make these controls usable.
 
+This enable web developers to reuse them in any projects without worrying about conflicting styles.
+
 ## Calendar (month view)
 
 ### Target scenarios
