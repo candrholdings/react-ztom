@@ -65,4 +65,4 @@ Features to be implemented:
 * Always show 6 rows of weeks
   * Calendar of 2015 February only fit on 4 rows
 
-Other view of calendar (year, day, agenda) should be implemented separately.
+Other view of calendar (year, day, agenda) should be implemented as separate controls.
