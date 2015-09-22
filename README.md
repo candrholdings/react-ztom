@@ -35,7 +35,7 @@ Prop name         | Description
 `className`       | CSS class name for the DOM element
 `date`            | Date the calendar should show, default is today
 `onSelect(Date)`  | Called when a date is selected and `selectable` is set to `true`
-`renderDay(Date)` | Custom renderer for day cell
+`renderDay(Date)` | Custom renderer for day cell, default to `date.getDate()`
 `selectable`      | `true` if the day cell is selectable, otherwise, `false`
 `selected`        | Selected cell, primarily add `selected` class to matching day cell
 `today`           | Date of today, primarily add `today` class to matching day cell
