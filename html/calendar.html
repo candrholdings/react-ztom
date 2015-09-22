@@ -1,0 +1,167 @@
+---
+{
+    "__layout": "default.html",
+    "title": "Calendar"
+}
+---
+
+--- style
+<link rel="stylesheet" type="text/css" href="css/ztom.calendar.css" />
+<style type="text/css">
+.themed.ztom-calendar {
+    border: solid 1px Black;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    padding: 5px;
+    width: 200px;
+}
+
+.themed.ztom-calendar > .header {
+    display: flex;
+    flex-direction: row;
+}
+
+.themed.ztom-calendar > .header > .weekday-name {
+    flex: 1;
+    text-align: center;
+}
+
+.themed.ztom-calendar > .week > .day {
+    text-align: center;
+}
+
+.themed.ztom-calendar > .week > button.day {
+    background-color: Transparent;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.themed.ztom-calendar > .week > button.day:hover:not(.active) {
+    background-color: #EEE;
+}
+
+.themed.ztom-calendar > .week > .day.other-month {
+    opacity: .2;
+}
+
+.themed.ztom-calendar > .week > .day.sunday {
+    color: Red;
+}
+
+.themed.ztom-calendar > .week > .day.today {
+    border: solid 1px #999;
+    font-weight: bold;
+}
+
+.themed.ztom-calendar > .week > .day.active {
+    background-color: #999;
+    color: White;
+}
+</style>
+---
+
+--- body
+<div id="root"></div>
+---
+
+--- javascript
+<script type="text/javascript" src="js/ztom.calendar.js"></script>
+<script type="text/jsx">
+!function (App, React) {
+    'use strict';
+
+    var Page = React.createClass({
+        getInitialState: function () {
+            return {
+                date: new Date(),
+                selectable: true,
+                selected: null,
+                themed: true
+            };
+        },
+        onPreviousMonthClick: function () {
+            var date = this.state.date;
+
+            this.setState({ date: new Date(date.getFullYear(), date.getMonth() - 1, 1) });
+        },
+        onNextMonthClick: function () {
+            var date = this.state.date;
+
+            this.setState({ date: new Date(date.getFullYear(), date.getMonth() + 1, 1) });
+        },
+        onSelectDate: function (date) {
+            this.setState({ date: date, selected: date });
+        },
+        onToggleSelectable: function () {
+            this.setState({ selectable: !this.state.selectable });
+        },
+        onToggleThemed: function () {
+            this.setState({ themed: !this.state.themed });
+        },
+        onRenderDay: function (date) {
+            var day = date.getDate();
+
+            return (
+                <span style={{fontWeight: day % 2 === 0 ? 'bold' : 'normal'}}>{day}</span>
+            );
+        },
+        render: function () {
+            var that = this,
+                {state} = that,
+                {date} = state;
+
+            return (
+                <div>
+                    <div>
+                        <label>
+                            <input type="checkbox" onChange={this.onToggleSelectable} value={state.selectable} />
+                            Selectable
+                        </label>
+                        <label>
+                            <input type="checkbox" onChange={this.onToggleThemed} value={state.themed} />
+                            Themed
+                        </label>
+                        <span style={{padding: 20}}>
+                            <button onClick={that.onPreviousMonthClick}>&lt;</button>
+                            <span>{date.toString().substr(4, 11)}</span>
+                            <button onClick={that.onNextMonthClick}>&gt;</button>
+                        </span>
+                    </div>
+                    <window.Ztom.Calendar className={state.themed ? 'themed' : ''}
+                                          date={date}
+                                          onSelect={that.onSelectDate}
+                                          renderDay={state.themed ? that.onRenderDay : null}
+                                          selectable={state.selectable}
+                                          selected={state.selected}>
+                        <span>Any children of &lt;Calendar&gt; appears as header here</span>
+                        <div className="header">
+                            <span className="weekday-name">S</span>
+                            <span className="weekday-name">M</span>
+                            <span className="weekday-name">T</span>
+                            <span className="weekday-name">W</span>
+                            <span className="weekday-name">T</span>
+                            <span className="weekday-name">F</span>
+                            <span className="weekday-name">S</span>
+                        </div>
+                    </window.Ztom.Calendar>
+                    {
+                        state.selected ?
+                            <div>Selected date is <span>{state.selected.toString()}</span></div>
+                        :
+                            <div>No date selected</div>
+                    }
+                </div>
+            );
+        }
+    });
+
+    React.render(
+        <Page />,
+        document.getElementById('root')
+    );
+}(window.App, window.React);
+</script>
+---

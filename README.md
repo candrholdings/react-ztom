@@ -1,38 +1,33 @@
-# react-ztom
-Simple and naive controls for ReactJS
+# C&R Website Boilerplate
 
-## Calendar
-### Sample JSX
-``` html
-<window.Ztom.Calendar date={new Date}>
-    <span>Any children appears as header here</span>
-</window.Ztom.Calendar>
-```
+A simple to-do list site which demonstrate latest web technologies and make it easy to create new website projects.
 
-### Props
-Prop name         | Description
------------------ | -----------
-`children`        | Elements to be added as header
-`className`       | CSS class name for the DOM element
-`date`            | Date the calendar should show, default is today
-`onSelect(Date)`  | Called when a date is selected and `selectable` is set to `true`
-`renderDay(Date)` | Custom renderer for day cell
-`selectable`      | `true` if the day cell is selectable, otherwise, `false`
-`selected`        | Selected cell, primarily add `selected` class to matching day cell
-`today`           | Date of today, primarily add `today` class to matching day cell
+## Libaries included
 
-### Rendered HTML
-``` html
-<div class="ztom-calendar">
-    <div class="week">
-        <button class="day sunday other-month">30</button>
-        <button class="day monday other-month">31</button>
-        <button class="day tuesday today">1</button>
-        <button class="day wednesday selected">2</button>
-        <button class="day thursday">3</button>
-        <button class="day friday">4</button>
-        <button class="day saturday">5</button>
-    </div>
-    ...
-</div>
-```
+Before using this repository, please read and accept licenses of corresponding libraries.
+
+* [jQuery](https://jquery.com/)
+* [React](https://facebook.github.io/react/)
+* [Immutable](http://facebook.github.io/immutable-js/)
+* [Reflux](https://github.com/reflux/refluxjs)
+* [Bootstrap](https://getbootstrap.com)
+* [PublishJS](https://github.com/candrholdings/publishjs)
+* [`window.fetch` polyfill](https://github.com/github/fetch)
+
+## Custom libraries
+* Reflux mixins
+  * `StateFrom`, link Reflux store properties to React component state
+  * `StoreProperty`, create store properties quickly
+    * `_list`, private accessor
+	* `getList`, public getter
+	* `setList`, private setter
+
+## How to use
+* Download this repository as ZIP and extract
+* Run `npm install`
+* Run `node publish -nlr`
+  * `-n`, don't uglify (a.k.a. nomin)
+  * `-l`, keep watch loop
+  * `-r`, enable LiveReload
+* Host a web server with root on `/publish`
+  * We recommend [detour-proxy](https://npmjs.org/detour-proxy) if you have web APIs

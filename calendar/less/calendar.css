@@ -1,0 +1,13 @@
+.ztom-calendar {
+    display: flex;
+    flex-direction: column;
+
+    > .week {
+        display: flex;
+        flex-direction: row;
+
+        > .day {
+            flex: 1;
+        }
+    }
+}

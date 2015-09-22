@@ -1,0 +1,30 @@
+---
+{
+    "__layout": "default.html",
+    "title": "To-do list"
+}
+---
+
+--- style
+---
+
+--- body
+<div id="root"></div>
+---
+
+--- javascript
+<script type="text/javascript" src="js/index.html.js"></script>
+<script type="text/jsx">
+!function (App, React) {
+    'use strict';
+
+    React.render(
+        <div>
+            <h1>Ztom</h1>
+            <a href="calendar.html">Calendar</a>
+        </div>,
+        document.getElementById('root')
+    );
+}(window.App, window.React);
+</script>
+---
